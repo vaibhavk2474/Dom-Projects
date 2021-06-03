@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas02</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        .color-container {
+            height: 3rem;
+            margin: 0 auto;
+            width: 35rem;
+            /* border: 2px solid red; */
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+
+
+
+
+
+
+
+
+        .color {
+            /* border: 1px solid red; */
+            height: 100%;
+            width: 15%;
+        }
+        .green{
+            background-color:green;
+        }
+        .orange{
+            background-color:orange;
+        }
+        .purple{
+            background-color:purple;
+        }
+        .black{
+            background-color : black;
+        }
+
+        /* canvas{
+            height: 500px;
+            width:  500px;
+        } */
+    </style>
+</head>
+
+<body>
+
+
+
+
+
+    <div class="color-container">
+        <buttun class="color green">green</buttun>
+        <buttun class="color orange">orange</buttun>
+        <buttun class="color purple">purple</buttun>
+        <buttun class="color black">black</buttun>
+    </div>
+    <canvas class="board" height="500px" width="500px"></canvas>
+    <!-- <button class="line-btn"> line btn</button> -->
+
+
+
+
+    <script>
+
+        /*create a btn , when it press then we can draw a line but if it press again then we cannot draw line*/
+        const board = document.querySelector(".board");
+        // const lineBtn = document.querySelector(".line-btn");
+        // const lineBtn2 = document.querySelector(".line-btn2");
+        const colorArr = document.querySelectorAll(".color");
+
+
+        const tool = board.getContext("2d");
+        let isDraw = false;
+
+
+
+
+
+
+        //error->how to give height ,width;
+        // board.style.height = "100vh";
+        // board.style.width = "100vw";
+
+
+
+
+        // board.style.border = "2px solid red";
+
+        // board.height = calc(window.innerHeight - getOriginal(colorArr[0].getBoundingClientRect().height));
+        // board.width = window.innerWidth;
+
+
+
+
+
+        //see error->
+        // lineBtn.addEventListener("click", () => {
+        //     islinebtnclicked = true;
+
+        //     console.log(true);
+        //     lineBtn.addEventListener("click", () => {
+        //         islinebtnclicked = false;
+        //         console.log(true);
+
+        //     })
+        // })
+
+
+
+        
+        
+        //handle canvas height , width
+        let h  = window.innerHeight -  colorArr[0].getBoundingClientRect().height-5;
+        console.log(window.innerHeight);
+        console.log(colorArr[0].getBoundingClientRect());
+        console.log(h);
+        
+
+
+
+        board.height = h;
+        board.width = window.innerWidth;
+        //draw 
+        for (let i = 0; i < colorArr.length; i++) {
+          let color =  colorArr[i].classList[1];
+            colorArr[i].addEventListener("click",(e)=>{
+                tool.strokeStyle = color;
+            })
+            
+        }
+
+
+
+
+
+      
+
+        //draw nhi kiya ja rha
+        isDraw = false;
+
+        board.addEventListener("mousedown", (e) => {
+
+            //draw kiya ja raha
+            isDraw = true;
+
+            let x = e.x;
+            let y = e.y;
+
+            tool.beginPath();
+            tool.moveTo(x, getOriginal(y));
+
+
+        })
+
+
+
+
+        board.addEventListener("mousemove", (e) => {
+            //agar draw kiya ja rha to kerte rho nhi to na karo
+            if (isDraw == false) {
+                console.log(true);
+                return;
+            }
+            let x = e.x;
+            let y = e.y;
+
+
+            tool.lineTo(x, getOriginal(y));
+            tool.stroke();
+
+
+        })
+
+        board.addEventListener("mouseup", (e) => {
+
+            //draw karna band kro
+            isDraw = false;
+            let x = e.x;
+            let y = e.y;
+
+            tool.lineTo(x, getOriginal(y));
+            tool.stroke();
+
+
+        })
+
+        function getOriginal(y){
+            let obj = colorArr[0].getBoundingClientRect();
+            // console.log(obj);
+            return y - obj.height;   
+        }
+        // getOriginal(10)
+
+    </script>
+</body>
+
+</html>

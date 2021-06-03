@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>camera -app v1</title>
+</head>
+
+<body>
+    <!-- create  a camera in video-container , a record btn and pause btn  -->
+    <div class="video-container">
+        <video class="video" controls autoplay></video>
+    </div>
+
+    <button class="record"> record</button>
+    <button class="pause"> pause </button>
+
+    <script>
+    /* TODO : get stream using MediaRecorder(Stream) , use it to show on camera-video and also make active record btn and pause btn*/
+        /*error- > jab m record karta hoo audio sath k sath sunai deti h to iske liye mute kr diya h video k controls m jo volume aata h */
+
+
+        let video = document.querySelector(".video");
+        let recordbtn = document.querySelector(".record");
+        let pausebtn = document.querySelector(".pause");
+
+        //mute the volume
+        video.muted = true;
+
+        //mughe video aur audio chahiye 
+        let constraint = {
+            video: true,
+            audio: true,
+            speaker:false,
+        }
+
+        //to push available recording
+        let recordingArr = [];
+
+        //get  a promise which is resolve after getting on the camer and audio
+        let userMediaPromise = navigator.mediaDevices.getUserMedia(constraint);
+
+        let mediaRecordingStreamForCurrentObj;
+
+
+        //make isRecording false means abhi recording on nhi h
+        let isRecording = false;
+
+        //pausen nhi h
+        let isPaused = false;
+
+
+
+        userMediaPromise.then(function (stream) {
+
+            //put stream into video element
+            video.srcObject = stream;
+            /* agar audio nhi h to bhi me use kar rha tha so it gives me err which is handle by catch*/
+            // audio.srcObject = stream;
+
+            //create a obj of MediaRecorder
+            mediaRecordingStreamForCurrentObj = new MediaRecorder(stream);
+
+
+
+            //after calling start() this eventListener will fire
+            mediaRecordingStreamForCurrentObj.addEventListener("dataavailable", (e) => {
+
+                // recordingArr.push(e.data);
+                recordingArr.push(e.data);
+            });
+
+            //after calling stop() this eventListener will fire
+            mediaRecordingStreamForCurrentObj.addEventListener("stop", () => {
+
+                const blob = new Blob(recordingArr, { type: 'video/mp4' });
+
+                const url = window.URL.createObjectURL(blob);
+
+                let a = document.createElement("a");
+                a.download = "recoring-file.mp4";
+                a.href = url;
+                a.click();
+                recordingArr = [];
+
+            })
+
+
+
+        })// ager promise resolve nhi hua ya then() m error h to catch() will fire;
+            .catch(function (err) {
+                alert("please on mic and camera");
+                console.log(err);
+            });
+
+
+        //for record the recording     
+        recordbtn.addEventListener("click", (e) => {
+
+            //ager recording start nhi h to start ker do aur isRecording ko bata do ki recording start h
+            if (isRecording == false) {
+                mediaRecordingStreamForCurrentObj.start();
+                recordbtn.innerText = `recording....`;
+                isRecording = true;
+            } else {
+
+                //ager recording start  h to band ker do aur isRecording ko bata do ki recording band ho gyi h
+
+                mediaRecordingStreamForCurrentObj.stop();
+                recordbtn.innerText = `record`;
+                isRecording = false;
+            }
+        })
+        //for pausing the recording     
+        pausebtn.addEventListener("click", (e) => {
+
+            //ager recording pause nhi h to pause ker do aur isPaused ko bata do ki pause ker diya   h
+            if (isPaused == false) {
+                mediaRecordingStreamForCurrentObj.pause();
+                pausebtn.innerText = `resume`;
+            } else {
+                
+                //ager recording pause  h to start(resume) ker do aur isPaused ko bata do ki resume ker diya   h
+                
+                mediaRecordingStreamForCurrentObj.resume();
+                pausebtn.innerText = `pause`;
+                
+            }
+            isPaused = !isPaused;
+        })
+        
+
+
+
+
+
+    </script>
+</body>
+
+</html>

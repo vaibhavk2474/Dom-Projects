@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gallery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0px;
+            align-items: center;
+            justify-content: space-evenly;
+
+        }
+
+        .media-container {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            width: 20rem;
+            border: 1px solid rgb(0, 0, 0);
+            height: 22rem;
+            background: #1a0101;
+            margin: 1rem;
+        }
+
+        .img {
+            padding-top: 15px;
+            margin-bottom: 1%;
+            height: 79%;
+            width: 100%;
+            border: 1px solid black;
+            padding-bottom: 12px
+        }
+
+        video {
+            height: 79%;
+            width: 100%;
+            /* border: 1px solid black; */
+            margin-bottom: 0%;
+        }
+
+        .delete-btn {
+           
+            box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+            font-size: x-large;
+            margin-top: 0%;
+            height: 9%;
+            width: 100%;
+            background-color: white;
+            border: 1px solid rgb(255, 255, 255);
+            font-weight: bold;
+            text-align: center;
+
+
+        }
+
+        .download-btn {
+            box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            height: 9%;
+            width: 100%;
+            background-color: white;
+            border: 1px solid rgb(255, 255, 255);
+            margin-top: 1%;
+        }
+
+        .back-to-indexFile {
+            background-color: #fafafa;
+            padding-top: 4vh;
+            border-radius: 50%;
+            border: 1px solid red;
+            height: 5rem;
+            width: 5rem;
+            position: fixed;
+            bottom: 5vh;
+            right: 5vh;
+            color: #3e2723;
+            font-weight: 900;
+            text-align: center;
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="back-to-indexFile">Back</div>
+
+
+
+
+
+
+    <script src="dbScript.js"></script>
+    <script>
+        let backToIndexFile = document.querySelector(".back-to-indexFile");
+        backToIndexFile.addEventListener("click", () => {
+            location.assign("index.html")
+        })
+
+        //think why this code written
+        setTimeout(() => {
+            viewOnGalleryPage();
+        }, 100)
+    </script>
+
+</body>
+
+</html>

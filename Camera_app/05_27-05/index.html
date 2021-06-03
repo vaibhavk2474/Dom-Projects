@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>camera-app</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- A1 create a video-container and put video in it -->
+
+
+ <div class="main-container">
+        <div class="video-container">
+        <video class="video" autoplay muted></video>
+        <div class="example-div"></div>
+
+        <div class="filter-overlay">
+      
+        </div>
+
+        <div class="timer">
+          00:00:00
+        </div>
+    </div>
+
+  
+ </div>
+
+
+ <!-- B1 create btn for recording and click img -->
+  <div class="btn-container">
+   
+    <div class="zoom-in-btn">
+    <i class="fas fa-search-minus"></i>
+   </div>
+   
+  <div class="outer-btn">    
+    <button class="record-btn round-btn" >
+      <i class="fas fa-video"></i>
+    </button>
+   </div>
+  
+   <div class="outer-btn">
+    <button class="click-btn round-btn">
+      <i class="fas fa-camera"></i>
+    </button>
+   </div>
+
+  
+   <div class="zoom-out-btn">
+    <i class="fas fa-search-plus"></i>
+   </div>
+
+  </div>
+
+
+  <!-- c1 -->
+  <div class="filter-color">
+    <div class="bg-color1 filter" ></div>
+    <div class="bg-color2 filter"></div>
+    <div class="bg-color3 filter"></div>
+    <div class="bg-color4 filter"></div>
+    <div class="bg-color5 filter"></div>
+  </div>
+
+  <div class="go-to-gallery-btn"><i class="fas fa-image"></i></div>
+
+
+
+
+  
+
+
+
+  <script src="dbScript.js"></script>
+  <script src="script.js"></script>
+
+    <script>
+
+       let gotoGalleryBtn = document.querySelector(".go-to-gallery-btn");
+       gotoGalleryBtn.addEventListener("click",()=>{
+         location.assign("gallery.html")
+       })
+    </script>
+
+</body>
+</html>

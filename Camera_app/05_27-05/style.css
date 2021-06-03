@@ -1,0 +1,197 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+}
+
+/* ..................video-conatiner........................... */
+/* A1.1 give 100vh 100vw height width to video-container */
+.main-container{
+    /* z-index: 1; */
+    height: 100vh;
+    width: 100vw;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+.video-container{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+    position: absolute;
+
+    overflow: hidden;
+    display: flex;
+    /* margin: auto; */
+    height: 70%;
+    width: 44%;
+    border: 1px solid #e0e0e0;
+    /* margin-top: 15vh; */
+    /* margin-left: 15vw; */
+    align-items: center;
+    justify-content: center;
+}
+.video{
+    transform: scale(1);
+   height: 95%;
+   width: 100%;
+}
+
+.btn-container{
+    z-index: 3;
+    display: flex;
+    /* border: 1px solid red; */
+    height: 12vh;
+    width: 22vw;
+    position: fixed;
+    bottom: 1vh;
+    left: 37vw;
+    align-items: center;
+    justify-content: space-evenly;
+    align-content: space-between;
+    gap: 5px;
+    /* flex-wrap: nowrap;
+    */
+
+}
+
+.animation-shrinkInOut{
+    animation: shrinkInOut infinite 1s;
+}
+.round-btn{
+    border: none;
+    background-color: #fafafa;
+    min-width: 3rem;
+    min-height: 3rem;
+    border-radius: 50%;
+}
+
+.outer-btn{
+    display: flex;
+    min-width: 5rem;
+    min-height: 5rem;
+    border-radius: 50%;
+    /* border: 1px solid #140101; */
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee;
+}
+
+.filter-overlay{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    /* background-color: #4caf50a6; */
+}
+
+.filter-color{
+    display: flex;
+    border: 1px solid red;
+    height: 8vh;
+    width: 40vw;
+    position: absolute;
+    left: 30vw;
+    top: 5vh;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.filter{
+    height: 100%;
+    width: 25%;
+    border: 1px solid black;
+}
+.bg-color1{
+    background-color:  #ffffff61;
+    background-image: url(https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=367&q=80);
+    background-blend-mode: color-burn ;
+    background-size: cover ;
+}
+.bg-color2{
+    background-color: #8be48e3d;
+    background-image: url(https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=367&q=80);
+    background-blend-mode: color-burn ;
+    background-size: cover ;
+}
+.bg-color3{
+    background-color: #c4455f7a;
+    background-image: url(https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=367&q=80);
+    background-blend-mode: color-burn ;
+    background-size: cover ;
+}
+.bg-color4{
+    background-color: #3596e623;
+    background-image: url(https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=367&q=80);
+    background-blend-mode: color-burn ;
+    background-size: cover ;
+}
+.bg-color5{
+    background-color: transparent;
+    background-image: url(https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=367&q=80);
+    background-blend-mode: color-burn ;
+    background-size: cover ;
+}
+
+.timer{
+    display: none;
+    color: currentcolor;
+    font-size: x-large;
+    top: 65vh;
+    position: absolute;
+    border: 1px solid red;
+}
+
+.go-to-gallery-btn{
+    padding-top: 4vh;
+    border-radius: 50%;
+    border: 1px solid red;
+    height: 5rem;
+    width: 5rem;
+    position: absolute;
+    bottom: 5vh;
+    right: 5vh;
+    color: currentcolor;
+    font-weight: 900;
+    text-align: center;
+}
+
+@keyframes shrinkInOut {
+
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+.example-div{
+     /* z-index: 2; 
+ background-color: bisque; */
+ position: absolute;
+ left: 19px;
+ top: 15px;
+ height: 480px;
+ width: 640px;
+}
